@@ -3,16 +3,19 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { QuestionProvider } from './lib/stepperContext';
-
+import { StepProvider } from './lib/stepperContext';
+import {QuestionProvider} from './lib/questionContext';
 
 
 
 ReactDOM.render(
   <React.StrictMode>
+    <StepProvider>
     <QuestionProvider>
-    <App />
+      <App />
     </QuestionProvider>
+    </StepProvider>
+
   </React.StrictMode>,
   document.getElementById('root')
 );

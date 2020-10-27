@@ -1,47 +1,48 @@
-import React from 'react'
+import React from "react";
 
-const QuestionStateContext = React.createContext()
-const QuestionDispatchContext = React.createContext()
+const StepStateContext = React.createContext();
+const StepDispatchContext = React.createContext();
 
-function questionReducer(state, action) {
+
+
+function stepReducer(state, action) {
   switch (action.type) {
-    case 'increment': {
-      return {question: state.question + 1}
+    case "increment": {
+      console.log('Increment running', 'Previous state', state)
+      return { step: state.step + 1 };
     }
-    case 'decrement': {
-      return {question: state.question - 1}
-    }
+
     default: {
-      throw new Error(`Unhandled action type: ${action.type}`)
+      throw new Error(`Unhandled action type: ${action.type}`);
     }
   }
 }
 
-function QuestionProvider({children}) {
-  const [state, dispatch] = React.useReducer(questionReducer, {question: 0})
+function StepProvider({ children }) {
+  const [state, dispatch] = React.useReducer(stepReducer, { step: 0 });
   return (
-    <QuestionStateContext.Provider value={state}>
-      <QuestionDispatchContext.Provider value={dispatch}>
+    <StepStateContext.Provider value={state}>
+      <StepDispatchContext.Provider value={dispatch}>
         {children}
-      </QuestionDispatchContext.Provider>
-    </QuestionStateContext.Provider>
-  )
+      </StepDispatchContext.Provider>
+    </StepStateContext.Provider>
+  );
 }
 
-function useQuestionState() {
-  const context = React.useContext(QuestionStateContext)
+function useStepState() {
+  const context = React.useContext(StepStateContext);
   if (context === undefined) {
-    throw new Error('useQuestionState must be used within a QuestionProvider')
+    throw new Error("useStepState must be used within a StepProvider");
   }
-  return context
+  return context;
 }
 
-function useQuestionDispatch() {
-  const context = React.useContext(QuestionDispatchContext)
+function useStepDispatch() {
+  const context = React.useContext(StepDispatchContext);
   if (context === undefined) {
-    throw new Error('useQuestionDispatch must be used within a QuestionProvider')
+    throw new Error("useStepDispatch must be used within a StepProvider");
   }
-  return context
+  return context;
 }
 
-export {QuestionProvider, useQuestionState, useQuestionDispatch}
+export { StepProvider, useStepState, useStepDispatch };
