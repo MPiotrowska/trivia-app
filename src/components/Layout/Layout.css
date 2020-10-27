@@ -1,0 +1,14 @@
+main {
+    border: 1px solid red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.inner-container {
+    min-height: 50vh;
+    max-width: 900px;
+    margin: auto;
+    width: 85%;
+}
