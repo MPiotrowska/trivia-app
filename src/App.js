@@ -1,25 +1,32 @@
+import React from 'react'
 import { Layout } from "./components/Layout/Index";
 import { Question } from "./components/Question/Index";
 import { Welcome } from "./components/Welcome/Index";
-import { useStepState, useStepDispatch } from "./lib/stepperContext";
-import { useQuestionDispatch } from "./lib/questionContext";
+import { useQuestionDispatch, useQuestionState } from "./lib/questionContext";
+
+
 
 function App() {
-  const stepState = useStepState();
-  const dispatch = useStepDispatch();
-  const nextDispatch = useQuestionDispatch()
+  const questionState = useQuestionState();
+  const dispatch = useQuestionDispatch();
 
-  const handleClick = () => {
-    dispatch({ type: "increment" });
-    nextDispatch({type:'nextQuestion'})
-  };
+  React.useEffect(() => {
+   dispatch({
+     type: 'shuffle'
+   })
+  }, []);
+
+  if(questionState.gameOver) {
+    return (
+      <Layout>
+        <p>Todo Game over</p>
+      </Layout>
+    )
+  }
 
   return (
     <Layout>
-      {stepState.step === 0 ? <Welcome /> : <Question />}
-      <button onClick={handleClick}>
-        {stepState.step === 0 ? "Start" : "Next"}
-      </button>
+      {questionState.gameInitialized === true ? <Question /> : <Welcome /> }
     </Layout>
   );
 }
