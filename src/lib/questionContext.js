@@ -1,20 +1,43 @@
 import React from "react";
-import db from "../api/data.json"
-import {createRandom} from '../helpers/createRandom'
+import db from "../api/data.json";
+import { shuffle } from "../helpers/shuffle";
 
 const QuestionStateContext = React.createContext();
 const QuestionDispatchContext = React.createContext();
 
-
+const initialState = {
+  data: [...db],
+  question: 0,
+  gameInitialized: false,
+  gameOver: false,
+};
 
 function questionReducer(state, action) {
   switch (action.type) {
-    case "nextQuestion": {
-        console.log('Next question running', 'Previous state', state)
+    case "initializeGame": {
+      console.log(state)
       return {
-          ...state,
-           question: createRandom(state.data.length -1) 
-        };
+        ...state,
+        gameInitialized: true,
+      };
+    }
+    case "nextQuestion": {
+      return {
+        ...state,
+        question: state.question + 1,
+      };
+    }
+    case "gameOver": {
+      return {
+        ...state,
+        gameOver: true,
+      };
+    }
+    case "shuffle": {
+      return {
+        ...state,
+        data: shuffle(state.data),
+      };
     }
 
     default: {
@@ -24,7 +47,7 @@ function questionReducer(state, action) {
 }
 
 function QuestionProvider({ children }) {
-  const [state, dispatch] = React.useReducer(questionReducer, { data:[...db], question: 0 });
+  const [state, dispatch] = React.useReducer(questionReducer, initialState);
   return (
     <QuestionStateContext.Provider value={state}>
       <QuestionDispatchContext.Provider value={dispatch}>
@@ -45,7 +68,9 @@ function useQuestionState() {
 function useQuestionDispatch() {
   const context = React.useContext(QuestionDispatchContext);
   if (context === undefined) {
-    throw new Error("useQuestionDispatch must be used within a QuestionProvider");
+    throw new Error(
+      "useQuestionDispatch must be used within a QuestionProvider"
+    );
   }
   return context;
 }
