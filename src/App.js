@@ -1,6 +1,7 @@
 import React from 'react'
 import { Layout } from "./components/Layout/Index";
 import { Question } from "./components/Question/Index";
+import { Reset } from './components/Reset';
 import { Welcome } from "./components/Welcome/Index";
 import { useQuestionDispatch, useQuestionState } from "./lib/questionContext";
 
@@ -19,7 +20,8 @@ function App() {
   if(questionState.gameOver) {
     return (
       <Layout>
-        <p>Todo Game over</p>
+        
+        <Reset/>
       </Layout>
     )
   }

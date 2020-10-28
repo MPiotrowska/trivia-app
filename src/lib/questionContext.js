@@ -39,6 +39,10 @@ function questionReducer(state, action) {
         data: shuffle(state.data),
       };
     }
+    case "reset": {
+      return initialState
+    }
+
 
     default: {
       throw new Error(`Unhandled action type: ${action.type}`);
