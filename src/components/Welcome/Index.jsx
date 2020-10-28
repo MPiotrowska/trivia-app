@@ -10,9 +10,11 @@ export const Welcome = () => {
     });
   };
   return (
-    <div>
-      <p>Welcome</p>
+    <>
+      <div>
+        <p>Welcome</p>
+      </div>
       <button onClick={handleClick}>Start Quiz</button>
-    </div>
+    </>
   );
 };
