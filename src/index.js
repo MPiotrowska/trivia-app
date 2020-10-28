@@ -1,23 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { StepProvider } from './lib/stepperContext';
-import {QuestionProvider} from './lib/questionContext';
-
-
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { QuestionProvider } from "./lib/questionContext";
 
 ReactDOM.render(
   <React.StrictMode>
-    <StepProvider>
     <QuestionProvider>
       <App />
     </QuestionProvider>
-    </StepProvider>
-
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function
