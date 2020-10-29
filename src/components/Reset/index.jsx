@@ -1,8 +1,9 @@
 import React from "react";
-import { useQuestionDispatch } from "../../lib/questionContext";
+import { useQuestionState, useQuestionDispatch } from "../../lib/questionContext";
 
 export const Reset = () => {
   const dispatch = useQuestionDispatch();
+  const state = useQuestionState();
 
   const handleClick = () => {
     dispatch({
@@ -13,7 +14,7 @@ export const Reset = () => {
   return (
     <>
       <div>
-        <p>Your score is: 0 </p>
+        <p>Your score is: {state.correctAnswersCounter} <span>/ 10</span> </p>
       </div>
       <button onClick={handleClick}>Play again</button>
     </>
