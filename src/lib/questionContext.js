@@ -10,12 +10,16 @@ const initialState = {
   question: 0,
   gameInitialized: false,
   gameOver: false,
+  showAnswer: false,
+  currentCorrectAnswer: "",
+  correctAnswersCounter: 0,
+  disableNext: true,
 };
 
 function questionReducer(state, action) {
   switch (action.type) {
     case "initializeGame": {
-      console.log(state)
+      console.log('Game Init State: ', state);
       return {
         ...state,
         gameInitialized: true,
@@ -25,6 +29,8 @@ function questionReducer(state, action) {
       return {
         ...state,
         question: state.question + 1,
+        showAnswer: false,
+        disableNext: true, 
       };
     }
     case "gameOver": {
@@ -39,10 +45,34 @@ function questionReducer(state, action) {
         data: shuffle(state.data),
       };
     }
-    case "reset": {
-      return initialState
+
+    case "toggleShowAnswer": {
+      return {
+        ...state,
+        showAnswer: true,
+        currentCorrectAnswer: action.payload,
+      };
     }
 
+    case "setCorrectAnswer": {
+      console.log("that was correct", state);
+      return {
+        ...state,
+        correctAnswersCounter: state.correctAnswersCounter + 1,
+      };
+    }
+
+    case "enableNext": {
+      return {
+        ...state,
+        disableNext: false,
+      };
+    }
+
+    case "reset": {
+      console.log('Current state is: ', state)
+      return initialState;
+    }
 
     default: {
       throw new Error(`Unhandled action type: ${action.type}`);
