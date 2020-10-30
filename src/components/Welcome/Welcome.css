@@ -1,0 +1,14 @@
+.welcomeText {
+    margin: 15px auto;
+    text-align: center;
+    font-size: 22px;
+    line-height: 26px;
+    max-width: 82%;
+}
+
+.description {
+    margin: 15px auto;
+    text-align: center;
+    max-width: 82%;
+
+}
