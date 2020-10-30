@@ -6,6 +6,7 @@ import {
   useQuestionDispatch
   
 } from "../../lib/questionContext";
+import {Button} from '../Button'
 
 export const QuestionContainer = () => {
   const questionState = useQuestionState();
@@ -26,8 +27,10 @@ export const QuestionContainer = () => {
   return (
     <>
       <Question />
-      {questionState.showAnswer === true ? <Answer />: null}
-      <button disabled={questionState.disableNext} onClick={handleClick}>Next Question</button>
+      <div style={{minHeight: '80px'}}>
+        {questionState.showAnswer === true ? <Answer />: null}
+      </div>
+      <Button disabled={questionState.disableNext} onClick={handleClick}>Next Question</Button>
     </>
   );
 };

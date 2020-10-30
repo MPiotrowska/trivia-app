@@ -1,8 +1,9 @@
 import React from "react";
+import './RadioButton.css'
 
-export const RadioButton = ({ value, checked= false, onChange }) => {
+export const RadioButton = ({ value, checked= false, onChange, onClick }) => {
   return (
-    <div>
+    <button name={value} className='container'onClick={onClick}>
       <input
         type="radio"
         id={value}
@@ -11,7 +12,7 @@ export const RadioButton = ({ value, checked= false, onChange }) => {
         checked={checked}
         onChange={onChange}
       />
-      <label for={value}>{value}</label>
-    </div>
+      <label className='label'for={value}>{value}</label>
+    </button>
   );
 };

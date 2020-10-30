@@ -1,0 +1,18 @@
+.container {
+   padding:10px ;
+   border: 1px solid #4bb9b7; 
+   margin: 10px auto;
+   background-color: #4bb9b729;
+   border-radius: 3px;
+   color:#156463;
+   min-width: 100%;
+display: flex;
+justify-content: flex-start;
+   
+
+}
+.label {
+   text-align: left;
+margin-left: 10px;
+}
+

@@ -5,8 +5,9 @@ import {
   useQuestionDispatch,
 } from "../../lib/questionContext";
 import { shuffle } from "../../helpers/shuffle";
+import './Question.css'
 
-export const Question = () => {
+export function Question() {
   const questionState = useQuestionState();
   const dispatch = useQuestionDispatch();
 
@@ -15,6 +16,7 @@ export const Question = () => {
 
   const [allAnswers, setAllAnswers] = React.useState([]);
   const [selected, setSelected] = React.useState("");
+
 
   const handleChange = (e) => {
     setSelected(e.target.name);
@@ -48,18 +50,19 @@ export const Question = () => {
   return (
     <>
       <div>
-        <p>{currentQuestion.question}</p>
-        <form action="">
+        <h1 className='welcomeText'>{currentQuestion.question}</h1>
+        <div className='radioButtonGroup'>
           {allAnswers.map((a) => {
             return (
               <RadioButton
                 value={a}
                 checked={selected === a}
                 onChange={handleChange}
+                onClick={handleChange}
               />
             );
           })}
-        </form>
+       </div>
       </div>
     </>
   );
