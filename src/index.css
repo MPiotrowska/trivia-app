@@ -41,3 +41,32 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+button {
+  background-color: #4bb9b7;
+  color: black;
+  border: none;
+  text-transform: capitalize;
+  padding:10px 24px ;
+  border-radius: 9px;
+  transition: all 0.5s ease-in-out;
+  font-size:18px ;
+  position: absolute;
+  bottom: 10px;
+  
+  width: 85%;
+}
+
+button:hover {
+  transform:translateY(-10px);
+  box-shadow: 0 14px 28px rgba(0,0,0,.25),0 10px 10px rgba(0,0,0,.22);
+
+}
+
+@media screen and (min-width:768px) {
+  button {
+    max-width: 180px;
+    position: relative;
+    bottom: auto;
+  }
+}
