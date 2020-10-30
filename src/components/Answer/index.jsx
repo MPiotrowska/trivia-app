@@ -3,5 +3,5 @@ import { useQuestionState } from "../../lib/questionContext";
 
 export const Answer = () => {
   const questionState = useQuestionState();
-  return <p>Correct answer is {questionState.currentCorrectAnswer}</p>;
+  return <p style={{ fontSize: '18px'}}>Correct answer is {questionState.currentCorrectAnswer}</p>;
 };
