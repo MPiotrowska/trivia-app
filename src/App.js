@@ -10,11 +10,10 @@ function App() {
   const dispatch = useQuestionDispatch();
 
   React.useEffect(() => {
-    
     dispatch({
       type: "shuffle",
     });
-  }, []);
+  }, [dispatch]);
 
   if (questionState.gameOver) {
     return (
@@ -26,7 +25,11 @@ function App() {
 
   return (
     <Layout>
-      {questionState.gameInitialized === true ? <QuestionContainer /> : <Welcome />}
+      {questionState.gameInitialized === true ? (
+        <QuestionContainer />
+      ) : (
+        <Welcome />
+      )}
     </Layout>
   );
 }

@@ -6,7 +6,6 @@ import {
 } from "../../lib/questionContext";
 import { shuffle } from "../../helpers/shuffle";
 
-
 export const Question = () => {
   const questionState = useQuestionState();
   const dispatch = useQuestionDispatch();
@@ -14,10 +13,8 @@ export const Question = () => {
   const currentQuestion = questionState.data[questionState.question];
   const correctAnswer = currentQuestion.correct;
 
-
   const [allAnswers, setAllAnswers] = React.useState([]);
   const [selected, setSelected] = React.useState("");
-  
 
   const handleChange = (e) => {
     setSelected(e.target.name);
@@ -26,15 +23,19 @@ export const Question = () => {
       payload: correctAnswer,
     });
     dispatch({
-      type: 'enableNext'
-    })
+      type: "enableNext",
+    });
   };
 
   React.useEffect(() => {
     const allJoined = [...currentQuestion.incorrect, currentQuestion.correct];
     const shuffled = shuffle(allJoined);
     setAllAnswers(shuffled);
-  }, [questionState.question]);
+  }, [
+    questionState.question,
+    currentQuestion.correct,
+    currentQuestion.incorrect,
+  ]);
 
   React.useEffect(() => {
     if (correctAnswer === selected) {
@@ -42,7 +43,7 @@ export const Question = () => {
         type: "setCorrectAnswer",
       });
     }
-  }, [correctAnswer, selected]);
+  }, [correctAnswer, selected, dispatch]);
 
   return (
     <>
