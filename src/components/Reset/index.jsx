@@ -9,6 +9,9 @@ export const Reset = () => {
     dispatch({
       type: "reset",
     });
+    dispatch({
+      type: "shuffle",
+    });
   };
 
   return (

@@ -40,6 +40,7 @@ function questionReducer(state, action) {
       };
     }
     case "shuffle": {
+      console.log('Shuffle state is: ', state)
       return {
         ...state,
         data: shuffle(state.data),
