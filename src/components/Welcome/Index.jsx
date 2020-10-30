@@ -2,6 +2,7 @@ import React from "react";
 import { useQuestionDispatch } from "../../lib/questionContext";
 import image from "../../images/bg-image.png";
 import "./Welcome.css";
+import { Button } from "../Button";
 
 export const Welcome = () => {
   const dispatch = useQuestionDispatch();
@@ -23,7 +24,8 @@ export const Welcome = () => {
           There are 10 questions in each round. Have fun 🎉🎉🎉
         </p>
       </div>
-      <button onClick={handleClick}>Start Quiz</button>
+      
+      <Button onClick={handleClick}>Start Quiz</Button>
     </>
   );
 };
