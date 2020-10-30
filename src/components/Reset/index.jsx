@@ -1,5 +1,6 @@
 import React from "react";
 import { useQuestionState, useQuestionDispatch } from "../../lib/questionContext";
+import { Button } from "../Button";
 
 export const Reset = () => {
   const dispatch = useQuestionDispatch();
@@ -19,7 +20,8 @@ export const Reset = () => {
       <div>
         <p>Your score is: {state.correctAnswersCounter} <span>/ 10</span> </p>
       </div>
-      <button onClick={handleClick}>Play again</button>
+      
+      <Button onClick={handleClick}>Play again</Button>
     </>
   );
 };
