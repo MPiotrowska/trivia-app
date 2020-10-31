@@ -17,8 +17,8 @@ export const Welcome = () => {
       <div>
         <img src={image} alt="" />
         <h1 className="welcomeText">
-          If you get a high score, you probably spend way too much time on
-          reading books.
+          If you get a high score, you probably spend way too much time
+          reading.
         </h1>
         <p className="description">
           There are 10 questions in each round. Have fun 🎉🎉🎉
